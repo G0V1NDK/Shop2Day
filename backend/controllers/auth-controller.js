@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const User = require('../models/user-model');
-const validation = require('../util/validation');
-const HttpError = require('../models/http-error');
+const User = require("../models/user-model");
+const validation = require("../util/validation");
+const HttpError = require("../models/http-error");
 
-require('dotenv').config()
+require("dotenv").config();
 
 async function signup(req, res, next) {
   if (
@@ -17,10 +17,10 @@ async function signup(req, res, next) {
       req.body.city,
       req.body.role
     ) ||
-    !validation.emailIsConfirmed(req.body.email, req.body['confirm-email'])
+    !validation.emailIsConfirmed(req.body.email, req.body["confirm-email"])
   ) {
     return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
+      new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
 
@@ -41,7 +41,7 @@ async function signup(req, res, next) {
 
     if (existsAlready) {
       const error = new HttpError(
-        'User exists already, please login instead.',
+        "User exists already, please login instead.",
         422
       );
       return next(error);
@@ -51,7 +51,7 @@ async function signup(req, res, next) {
     createdUserId = createdUser.insertedId.toString();
   } catch (err) {
     const error = new HttpError(
-      'Signing up failed, please try again later.',
+      "Signing up failed, please try again later.",
       500
     );
     return next(error);
@@ -61,24 +61,77 @@ async function signup(req, res, next) {
 
   let token;
   try {
-    token = jwt.sign(
-      { user: createdUser },
-      process.env.JWT_TOKEN_SECRET_KEY,
-      { expiresIn: '1h' }
-    );
+    token = jwt.sign({ user: createdUser }, process.env.JWT_TOKEN_SECRET_KEY, {
+      expiresIn: "1h",
+    });
   } catch (err) {
     const error = new HttpError(
-      'Signing up failed, please try again later.',
+      "Signing up failed, please try again later.",
       500
     );
     return next(error);
   }
 
-  res
-    .status(201)
-    .json({ user: createdUser, token: token });
+  res.status(201).json({ user: createdUser, token: token });
+}
+
+async function login(req, res, next) {
+  const user = new User(req.body.email, req.body.password);
+
+  let existingUser;
+  try {
+    existingUser = await user.getUserWithSameEmail();
+  } catch (err) {
+    const error = new HttpError(
+      "Logging in failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+
+  if (!existingUser) {
+    const error = new HttpError(
+      "Invalid credentials - please double-check your email and password!",
+      403
+    );
+    return next(error);
+  }
+
+  const passwordIsCorrect = await user.hasMatchingPassword(
+    existingUser.password
+  );
+
+  if (!passwordIsCorrect) {
+    const error = new HttpError(
+      "Invalid credentials, could not log you in.",
+      403
+    );
+    return next(error);
+  }
+
+  const authenticatedUser = await User.findById(existingUser._id);
+
+  let token;
+  try {
+    token = jwt.sign(
+      { user: authenticatedUser },
+      process.env.JWT_TOKEN_SECRET_KEY,
+      {
+        expiresIn: "1h",
+      }
+    );
+  } catch (err) {
+    const error = new HttpError(
+      "Logging in failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ user: authenticatedUser, token: token });
 }
 
 module.exports = {
   signup: signup,
+  login: login,
 };
