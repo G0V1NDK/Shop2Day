@@ -4,16 +4,12 @@ const mongodb = require("mongodb");
 const db = require("../data/database");
 
 class User {
-  constructor(email, password, fullname, street, postal, city, role) {
+  constructor(email, password, fullname, role, phone) {
     this.email = email;
     this.password = password;
     this.name = fullname;
     this.role = role;
-    this.address = {
-      street: street,
-      postalCode: postal,
-      city: city,
-    };
+    this.phone = phone;
   }
 
   static findById(userId) {
@@ -44,8 +40,8 @@ class User {
       email: this.email,
       password: hashedPassword,
       name: this.name,
-      address: this.address,
       role: this.role,
+      phone: this.phone,
     });
   }
 
