@@ -12,12 +12,9 @@ async function signup(req, res, next) {
       req.body.email,
       req.body.password,
       req.body.fullname,
-      req.body.street,
-      req.body.postal,
-      req.body.city,
-      req.body.role
-    ) ||
-    !validation.emailIsConfirmed(req.body.email, req.body["confirm-email"])
+      req.body.role,
+      req.body.phone
+    )
   ) {
     return next(
       new HttpError("Invalid inputs passed, please check your data.", 422)
@@ -28,10 +25,8 @@ async function signup(req, res, next) {
     req.body.email,
     req.body.password,
     req.body.fullname,
-    req.body.street,
-    req.body.postal,
-    req.body.city,
-    req.body.role
+    req.body.role,
+    req.body.phone
   );
 
   let createdUserId;

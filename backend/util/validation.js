@@ -2,34 +2,27 @@ function isEmpty(value) {
   return !value || value.trim() === "";
 }
 
-function userCredentialsAreValid(email, password, role) {
+function userCredentialsAreValid(email, password, role, phone) {
   return (
     email &&
     email.includes("@") &&
     password &&
-    password.trim().length >= 6 &&
+    password.trim().length >= 8 &&
     role &&
     (role.trim() === "seller" ||
       role.trim() === "admin" ||
-      role.trim() === "customer")
+      role.trim() === "customer") &&
+    phone &&
+    phone.trim().length == 10
   );
 }
 
-function userDetailsAreValid(email, password, name, street, postal, city, role) {
+function userDetailsAreValid(email, password, name, role, phone) {
   return (
-    userCredentialsAreValid(email, password, role) &&
-    !isEmpty(name) &&
-    !isEmpty(street) &&
-    !isEmpty(postal) &&
-    !isEmpty(city)
+    userCredentialsAreValid(email, password, role, phone) && !isEmpty(name)
   );
-}
-
-function emailIsConfirmed(email, confirmEmail) {
-  return email === confirmEmail;
 }
 
 module.exports = {
   userDetailsAreValid: userDetailsAreValid,
-  emailIsConfirmed: emailIsConfirmed,
 };
