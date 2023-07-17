@@ -4,7 +4,7 @@ const db = require("../data/database");
 
 class Product {
   constructor(productData, sellerId) {
-    this.sellerId = sellerId;
+    this.sellerId = productData.sellerId;
     this.title = productData.title;
     this.summary = productData.summary;
     this.price = +productData.price;
@@ -41,22 +41,13 @@ class Product {
   }
 
   static async findBySellerId(sellerId) {
-    let sId;
-
-    try {
-      sId = new mongodb.ObjectId(sellerId);
-    } catch (error) {
-      error.code = 404;
-      throw error;
-    }
-
     const products = await db
       .getDb()
       .collection("products")
-      .find({ sellerId: sId })
+      .find({ sellerId: sellerId })
       .toArray();
 
-    if (!products) {
+    if (!products || products.length === 0) {
       const error = new Error(
         "Could not find product with provided seller id."
       );
@@ -115,14 +106,14 @@ class Product {
         delete productData.image;
       }
 
-      await db.getDb().collection("products").updateOne(
+      return await db.getDb().collection("products").updateOne(
         { _id: productId },
         {
           $set: productData,
         }
       );
     } else {
-      await db.getDb().collection("products").insertOne(productData);
+      return await db.getDb().collection("products").insertOne(productData);
     }
   }
 
