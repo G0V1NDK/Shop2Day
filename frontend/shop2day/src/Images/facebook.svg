@@ -1,0 +1,34 @@
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="21" height="20" fill="#6F6F6F"/>
+<g id="Sign Up">
+<rect width="1440" height="1024" transform="translate(-612 -751)" fill="#F5F5F5"/>
+<g id="Frame 19" filter="url(#filter0_d_0_1)">
+<rect x="-112" y="-627" width="440" height="730" rx="4" fill="white"/>
+<g id="Frame 17">
+<g id="Frame 8">
+<g id="Frame 4">
+<rect x="-64" y="-12" width="344" height="44" rx="4" fill="#3B5998"/>
+<g id="facebook-svgrepo-com 1" clip-path="url(#clip0_0_1)">
+<path id="Vector" d="M10.5 20C16.0228 20 20.5 15.5228 20.5 10C20.5 4.47715 16.0228 0 10.5 0C4.97715 0 0.5 4.47715 0.5 10C0.5 15.5228 4.97715 20 10.5 20Z" fill="white"/>
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M13.1162 5.78214C12.7818 5.70498 12.3303 5.64739 12.0463 5.64739C11.2773 5.64739 11.2274 6.03301 11.2274 6.65009V7.74851H13.1496L12.9821 10.0238H11.2274V16.9446H8.82044V10.0238H7.58337V7.74851H8.82044V6.34112C8.82044 4.41329 9.60597 3.3335 11.5782 3.3335C12.2634 3.3335 12.7649 3.44919 13.4167 3.60343L13.1162 5.78214Z" fill="#3B5998"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-132" y="-640" width="480" height="770" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="7"/>
+<feGaussianBlur stdDeviation="10"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.160784 0 0 0 0 0.239216 0 0 0 0.08 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect width="20" height="20" fill="white" transform="translate(0.5)"/>
+</clipPath>
+</defs>
+</svg>
