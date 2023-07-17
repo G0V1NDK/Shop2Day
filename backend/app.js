@@ -1,10 +1,12 @@
 const express = require('express');
 
 const db = require('./data/database');
+
 const enableCors = require('./middlewares/cors');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const notFoundMiddleware = require('./middlewares/not-found');
 
+const productsRoutes = require('./routes/products-routes');
 const authRoutes = require('./routes/auth-routes');
 
 const app = express();
@@ -15,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(authRoutes);
+app.use(productsRoutes);
 
 app.use(notFoundMiddleware);
 
