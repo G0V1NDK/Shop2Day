@@ -1,7 +1,6 @@
-const HttpError = require('../models/http-error');
-
 function notFoundHandler(req, res) {
-  const error = new HttpError("Could not find this route.", 404);
+  const error = new Error("Could not find this route.");
+  error.code = 404;
   throw error;
 }
 

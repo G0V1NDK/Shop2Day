@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user-model");
 const validation = require("../util/validation");
-const HttpError = require("../models/http-error");
 
 require("dotenv").config();
 
@@ -16,9 +15,10 @@ async function signup(req, res, next) {
       req.body.phone
     )
   ) {
-    return next(
-      new HttpError("Invalid inputs passed, please check your data.", 422)
-    );
+    const error = new Error("Invalid inputs passed, please check your data.");
+    error.code = 422;
+
+    return next(error);
   }
 
   const user = new User(
@@ -35,20 +35,18 @@ async function signup(req, res, next) {
     const existsAlready = await user.existsAlready();
 
     if (existsAlready) {
-      const error = new HttpError(
-        "User exists already, please login instead.",
-        422
-      );
+      const error = new Error("User exists already, please login instead.");
+      error.code = 422;
+
       return next(error);
     }
 
     const createdUser = await user.signup();
     createdUserId = createdUser.insertedId.toString();
-  } catch (err) {
-    const error = new HttpError(
-      "Signing up failed, please try again later.",
-      500
-    );
+  } catch (error) {
+    error.message = "Signing up failed, please try again later.";
+    error.code = 500;
+
     return next(error);
   }
 
@@ -59,11 +57,10 @@ async function signup(req, res, next) {
     token = jwt.sign({ user: createdUser }, process.env.JWT_TOKEN_SECRET_KEY, {
       expiresIn: "1h",
     });
-  } catch (err) {
-    const error = new HttpError(
-      "Signing up failed, please try again later.",
-      500
-    );
+  } catch (error) {
+    error.message = "Signing up failed, please try again later.";
+    error.code = 500;
+
     return next(error);
   }
 
@@ -76,19 +73,17 @@ async function login(req, res, next) {
   let existingUser;
   try {
     existingUser = await user.getUserWithSameEmail();
-  } catch (err) {
-    const error = new HttpError(
-      "Logging in failed, please try again later.",
-      500
-    );
+  } catch (error) {
+    error.message = "Logging in failed, please try again later.";
+    error.code = 500;
+
     return next(error);
   }
 
   if (!existingUser) {
-    const error = new HttpError(
-      "Invalid credentials - please double-check your email and password!",
-      403
-    );
+    const error = new Error("Invalid credentials - please double-check your email and password!");
+    error.code = 403;
+
     return next(error);
   }
 
@@ -97,10 +92,9 @@ async function login(req, res, next) {
   );
 
   if (!passwordIsCorrect) {
-    const error = new HttpError(
-      "Invalid credentials, could not log you in.",
-      403
-    );
+    const error = new Error("Invalid credentials, could not log you in.");
+    error.code = 403;
+    
     return next(error);
   }
 
@@ -115,11 +109,10 @@ async function login(req, res, next) {
         expiresIn: "1h",
       }
     );
-  } catch (err) {
-    const error = new HttpError(
-      "Logging in failed, please try again later.",
-      500
-    );
+  } catch (error) {
+    error.message = "Logging in failed, please try again later.";
+    error.code = 500;
+
     return next(error);
   }
 
