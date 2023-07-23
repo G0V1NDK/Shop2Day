@@ -170,7 +170,7 @@ const Login = () => {
                 </div>
                 {/* main login */}
                 <button
-                  className="self-stretch px-5 py-3 bg-orange-500 rounded justify-center items-center gap-2.5 inline-flex"
+                  className="self-stretch px-5 py-3 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 focus:outline-none focus:ring focus:ring-orange-300 rounded justify-center items-center gap-2.5 inline-flex"
                   type="submit"
                 >
                   <div className="text-center text-white text-base font-medium">

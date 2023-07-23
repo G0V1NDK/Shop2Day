@@ -16,8 +16,8 @@ const SignUp = () => {
     fullname: Yup.string().required("Name is required"),
     phone: Yup.string()
       .required("Phone Number is required")
-      .min(10, "Number must be at least 10 Number")
-      .max(10, "Number must be at least 10 Number"),
+      .min(10, "Phone Number must be at least 10 Number")
+      .max(10, "Phone Number must be at least 10 Number"),
     email: Yup.string().required("Email is required").email("Email is invalid"),
     password: Yup.string()
       .required("Password is required")
@@ -252,7 +252,7 @@ const SignUp = () => {
                 </div>
                 {/* main signup */}
                 <button
-                  className="self-stretch px-5 py-3 bg-orange-500 rounded justify-center items-center gap-2.5 inline-flex"
+                  className="self-stretch px-5 py-3 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 focus:outline-none focus:ring focus:ring-orange-300 rounded justify-center items-center gap-2.5 inline-flex"
                   type="submit"
                 >
                   <div className="text-center text-white text-base font-medium">
