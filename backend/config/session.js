@@ -3,7 +3,6 @@ const mongoDbStore = require("connect-mongodb-session");
 
 require("dotenv").config();
 
-
 function createSessionStore() {
   const MongoDBStore = mongoDbStore(expressSession);
 

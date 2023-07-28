@@ -1,8 +1,11 @@
 const express = require("express");
 
 const cartController = require("../controllers/cart-controller");
+const checkAuthStatusMiddleware = require("../middlewares/check-auth");
 
 const router = express.Router();
+
+router.use(checkAuthStatusMiddleware);
 
 router.get("/", cartController.getCart); // /cart/
 

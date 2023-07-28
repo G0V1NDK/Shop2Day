@@ -1,7 +1,8 @@
 const Product = require("../models/product-model");
 
 async function getCart(req, res) {
-  res.render("customer/cart/cart");
+    const cart = res.locals.cart;
+    res.status(200).json({ cart: cart });
 }
 
 async function addCartItem(req, res, next) {
@@ -9,6 +10,8 @@ async function addCartItem(req, res, next) {
   try {
     product = await Product.findById(req.body.productId);
   } catch (error) {
+      error.message = "Could not add item to cart , please try again later";
+      error.code = 500;
     next(error);
     return;
   }
@@ -34,7 +37,7 @@ function updateCartItem(req, res) {
 
   req.session.cart = cart;
 
-  res.json({
+  res.status(200).json({
     message: "Item updated!",
     updatedCartData: {
       newTotalQuantity: cart.totalQuantity,
