@@ -10,16 +10,12 @@ const Home = () => {
     <>
       {/* <Verify /> */}
 
-      <Header />
-
       <Carousel />
 
       <div className="flex justify-center">
         <CardSection />
       </div>
 
-      {/* footer */}
-      <Footer />
     </>
   );
 };
