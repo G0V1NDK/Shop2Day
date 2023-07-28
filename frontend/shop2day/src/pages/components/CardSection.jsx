@@ -4,6 +4,7 @@ import Arrow from "../../Images/Arrow.svg";
 import { path_url } from "../../config/config";
 
 import CardHome from "./CardHome";
+import { Link } from "react-router-dom";
 
 const CardSection = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,7 @@ const CardSection = () => {
             <h1>Best of Electronics</h1>
           </div>
           <div className="left justify-center items-center gap-2 inline-flex">
-            <h1 className="text-neutral-800 text-base font-normal">SEE More</h1>
+            <h1 className="text-neutral-800 text-base font-normal">See more</h1>
             <div className="image">
               <img src={Arrow} alt="" />
             </div>
@@ -39,7 +40,9 @@ const CardSection = () => {
         </div>
         <div className="content-body flex gap-3 mb-12 ml-6">
           {products.map((res) => (
-            <CardHome key={res.id} {...res} />
+            <Link to={"/product/" + res.id} key={res.id}>
+              <CardHome  {...res} />
+            </Link>
           ))}
         </div>
       </div>

@@ -4,16 +4,30 @@ import SignUp from "../src/pages/SignUp";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Seller from "./pages/Seller";
+import Product from "./pages/Product";
+import Header from "./pages/components/Header";
+import Footer from "./pages/components/Footer";
+
+export const Layout = ({children}) => {
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+};
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Layout><Home /> </Layout>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/seller" element={<Seller />} />
+          <Route path="/seller" element={ <Seller />} />
+          <Route path="/product/:id" element={<Layout><Product /></Layout>} />
         </Routes>
       </BrowserRouter>
     </>

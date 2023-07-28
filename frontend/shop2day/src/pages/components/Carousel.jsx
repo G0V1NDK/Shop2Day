@@ -39,10 +39,13 @@ export const Carousel = () => {
   };
 
   return (
-    <div className="max-w-[1400px] h-96 w-11/12 m-auto py-16 px-4 relative group" style={{width: "84rem"}}>
+    <div
+      className="max-w-[1400px] h-96 w-11/12 m-auto py-16 px-4 relative group"
+      style={{ width: "84rem" }}
+    >
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
+        className="w-full h-full rounded bg-center bg-cover duration-500"
       ></div>
       {/* Left Arrow */}
       <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full  bg-black/20 text-white cursor-pointer">
@@ -50,7 +53,8 @@ export const Carousel = () => {
         <button
           type="button"
           className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          onClick={prevSlide} size={30}
+          onClick={prevSlide}
+          size={30}
         >
           <span className="inline-flex items-center justify-center bg-white group-hover:bg-white  group-focus:ring-white group-focus:outline-none w-[46px] h-[99px] rounded">
             <svg
@@ -78,7 +82,8 @@ export const Carousel = () => {
         <button
           type="button"
           className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none "
-          onClick={nextSlide} size={30}
+          onClick={nextSlide}
+          size={30}
         >
           <span className="inline-flex items-center justify-center bg-white group-hover:bg-white group-focus:ring-white group-focus:outline-none w-[46px] h-[99px] rounded">
             <svg
