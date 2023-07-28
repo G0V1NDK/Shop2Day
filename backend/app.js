@@ -2,6 +2,9 @@ const express = require('express');
 
 const db = require('./data/database');
 
+const expressSession = require("express-session");
+const createSessionConfig = require("./config/session");
+
 const enableCors = require('./middlewares/cors');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const notFoundMiddleware = require('./middlewares/not-found');
@@ -17,6 +20,11 @@ app.use(enableCors);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+const sessionConfig = createSessionConfig();
+
+app.use(expressSession(sessionConfig));
+
 
 app.use('/products/assets', express.static('product-data'));
 
