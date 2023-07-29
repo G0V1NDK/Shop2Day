@@ -21,9 +21,11 @@ async function addCartItem(req, res, next) {
   cart.addItem(product);
   req.session.cart = cart;
 
-  res.status(201).json({
-    message: "Cart updated!",
-    newTotalItems: cart.totalQuantity,
+  req.session.save(function() {
+    res.status(201).json({
+      message: "Cart updated!",
+      newTotalItems: cart.totalQuantity,
+    });
   });
 }
 
@@ -37,13 +39,15 @@ function updateCartItem(req, res) {
 
   req.session.cart = cart;
 
-  res.status(200).json({
-    message: "Item updated!",
-    updatedCartData: {
-      newTotalQuantity: cart.totalQuantity,
-      newTotalPrice: cart.totalPrice,
-      updatedItemPrice: updatedItemData.updatedItemPrice,
-    },
+  req.session.save(function() {
+    res.status(200).json({
+      message: "Item updated!",
+      updatedCartData: {
+        newTotalQuantity: cart.totalQuantity,
+        newTotalPrice: cart.totalPrice,
+        updatedItemPrice: updatedItemData.updatedItemPrice,
+      },
+    });
   });
 }
 
