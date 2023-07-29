@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { path_url } from "../config/config";
-import SellerTable from "./components/sellerTable";
+import SellerTable from "./components/SellerTable";
 
 export const PopupForm = ({ onClose }) => {
 
