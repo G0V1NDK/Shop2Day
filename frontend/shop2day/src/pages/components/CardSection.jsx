@@ -9,15 +9,14 @@ import { Link } from "react-router-dom";
 const CardSection = () => {
   const [products, setProducts] = useState([]);
 
-  console.log(products);
-
+ 
   useEffect(() => {
     getProducts();
   }, []);
 
   async function getProducts() {
     try {
-      const myData = await axios.get(`${path_url}/products`);
+      const myData = await axios.get(`${path_url}/products`,{withCredentials: true});
       setProducts(myData?.data?.products);
     } catch (err) {
       console.log(err.message);

@@ -66,6 +66,7 @@ export const PopupForm = ({ onClose }) => {
             "Content-Type":
               "multipart/form-data; boundary=<calculated when request is sent>",
           },
+          withCredentials: true
         });
         console.log(response);
       } catch (err) {
@@ -232,6 +233,7 @@ const Seller = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true
       });
       setSellerData(response?.data?.products);
       // console.log(response);

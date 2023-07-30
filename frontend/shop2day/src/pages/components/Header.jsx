@@ -102,10 +102,12 @@ const Header = () => {
                   </li>
                 </button>
                 <li className="justify-start items-center gap-2 flex">
+                  <Link to = "/cart">
                   <img src={cart} alt="" className="w-7 h-7 relative" />
                   <div className="text-neutral-800 text-base font-normal">
                     Cart
                   </div>
+                  </Link>
                 </li>
                 <li className="justify-start items-center gap-2 flex">
                   <img src={Wishlist} alt="" className="w-7 h-7 relative" />
