@@ -8,7 +8,9 @@ function enableCors(req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  
+
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
   next();
 }
 

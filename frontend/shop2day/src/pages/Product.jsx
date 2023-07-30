@@ -11,7 +11,6 @@ import { path_url } from "../config/config";
 
 const Product = () => {
   const productId = useParams();
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const Product = () => {
 
   async function getProducts() {
     try {
-      const myData = await axios.get(`${path_url}/products/${productId.id}`);
+      const myData = await axios.get(`${path_url}/products/${productId.id}`,{withCredentials: true});
       setProducts(myData?.data?.product);
     } catch (err) {
       console.log(err.message);
@@ -28,6 +27,24 @@ const Product = () => {
   }
 
   const maxPrice = products.price * 2;
+  const handleCart =async () =>{
+    const data = {productId:productId.id};
+    const token = localStorage.getItem("accessToken");
+    console.log(token);
+    try {
+      
+      const response = await axios.post(`${path_url}/cart/items`,data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type":"application/json",
+        },
+        withCredentials: true,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log('Error adding product to cart:', error);
+    }
+  }
 
   return (
     <>
@@ -43,7 +60,7 @@ const Product = () => {
               />
               {/* shopping btns */}
               <div className="flex justify-around my-4">
-                <button className=" px-12 py-3 bg-amber-400 rounded justify-center items-centerinline-flex text-center text-white text-2xl font-semibold tracking-tight">
+                <button className=" px-12 py-3 bg-amber-400 rounded justify-center items-centerinline-flex text-center text-white text-2xl font-semibold tracking-tight" onClick={handleCart}>
                   Add to cart
                 </button>
                 <button className=" px-12 py-3 bg-orange-500 rounded justify-center items-center flex text-center text-white text-2xl font-semibold tracking-tight">
@@ -95,7 +112,7 @@ const Product = () => {
                       -20%
                     </div>
                     <div className="text-neutral-800 text-3xl font-semibold tracking-widest">
-                    ₹{products.price}
+                      ₹{products.price}
                     </div>
                     <div className="text-zinc-500 text-base font-normal line-through tracking-wider">
                       ₹
@@ -192,7 +209,7 @@ const Product = () => {
                           className="text-zinc-500 text-sm font-normal border-x-white border-t-white border-2 border-b-blue-600 "
                           placeholder="Enter Pincode"
                           style={{
-                            outline: "none"
+                            outline: "none",
                           }}
                         />
                       </div>
@@ -265,16 +282,12 @@ const Product = () => {
                   <div className="text-neutral-800 text-lg font-semibold">
                     Product Information
                   </div>
-                  <div className=" text-sm">
-                    {products.description}
-                  </div>
+                  <div className=" text-sm">{products.description}</div>
                   <div className="flex-col justify-start items-start gap-2 flex">
                     <div className="text-neutral-800 text-base font-medium">
                       General Information
                     </div>
-                    <div className=" text-sm">
-                      {products.summary}
-                    </div>
+                    <div className=" text-sm">{products.summary}</div>
                     <table>
                       <tbody>
                         <tr className="">

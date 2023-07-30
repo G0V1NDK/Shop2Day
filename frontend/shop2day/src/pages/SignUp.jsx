@@ -53,7 +53,7 @@ const SignUp = () => {
       values.phone = phone.value.toString();
 
       try {
-        const response = await axios.post(`${path_url}/signup`, values);
+        const response = await axios.post(`${path_url}/signup`, values, {withCredentials: true});
         
         if(response.status === 201){
           console.log(response);

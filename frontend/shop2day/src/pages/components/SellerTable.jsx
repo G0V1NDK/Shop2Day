@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 // update form
-export const PopupForm = ({ onClose }) => {
+export const PopupForm = ({ onClose ,seller}) => {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
@@ -21,6 +21,7 @@ export const PopupForm = ({ onClose }) => {
   });
 
   const [image, setImage] = useState(null);
+  console.log(seller);
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -39,25 +40,27 @@ export const PopupForm = ({ onClose }) => {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      price: "",
-      summary: "",
-      description: "",
+      title: seller.title,
+      price: seller.price,
+      summary: seller.summary,
+      description: seller.description,
       image: null,
     },
     validationSchema,
 
     onSubmit: async (data, { setSubmitting }) => {
       data.price = data.price.toString();
+      console.log(data);
       const token = localStorage.getItem("accessToken");
 
       try {
-        const response = await axios.post(`${path_url}/products/${id}`, data, {
+        const response = await axios.post(`${path_url}/seller/products/${seller.id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type":
               "multipart/form-data; boundary=<calculated when request is sent>",
           },
+          withCredentials: true
         });
         console.log(response);
       } catch (err) {
@@ -213,11 +216,20 @@ const SellerTable = ({
   image,
 }) => {
   const token = localStorage.getItem("accessToken");
-
+const [seller,setSeller] = useState({});
   const [showPopup, setShowPopup] = useState(false);
 
   const popupHandler = (show) => {
     setShowPopup(show);
+    setSeller({
+      id,
+      title,
+      imageUrl,
+      price,
+      summary,
+      description,
+      image,
+    });
   };
 
   const handleDelete = async () => {
@@ -228,6 +240,7 @@ const SellerTable = ({
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          withCredentials: true,
         }
       );
       console.log(deleteProduct);
@@ -331,7 +344,7 @@ const SellerTable = ({
             >
               Edit
             </button>
-            {showPopup && <PopupForm onClose={popupHandler} />}
+            {showPopup && <PopupForm onClose={popupHandler} seller= {seller} />}
           </td>
           {/* .... */}
           {/* <td>

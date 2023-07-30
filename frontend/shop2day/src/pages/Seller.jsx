@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { path_url } from "../config/config";
-import SellerTable from "./components/sellerTable";
+import SellerTable from "./components/SellerTable";
 
 export const PopupForm = ({ onClose }) => {
 
@@ -66,6 +66,7 @@ export const PopupForm = ({ onClose }) => {
             "Content-Type":
               "multipart/form-data; boundary=<calculated when request is sent>",
           },
+          withCredentials: true
         });
         console.log(response);
       } catch (err) {
@@ -232,6 +233,7 @@ const Seller = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true
       });
       setSellerData(response?.data?.products);
       // console.log(response);

@@ -7,6 +7,7 @@ import Seller from "./pages/Seller";
 import Product from "./pages/Product";
 import Header from "./pages/components/Header";
 import Footer from "./pages/components/Footer";
+import Cart from "./pages/Cart";
 
 export const Layout = ({children}) => {
   return (
@@ -28,6 +29,7 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/seller" element={ <Seller />} />
           <Route path="/product/:id" element={<Layout><Product /></Layout>} />
+          <Route path="/cart" element={<Layout><Cart /> </Layout>} />
         </Routes>
       </BrowserRouter>
     </>
