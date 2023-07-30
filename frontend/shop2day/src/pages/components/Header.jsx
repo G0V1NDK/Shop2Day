@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "..//../Images/logo s2y.svg";
 import user from "..//../Images/user.svg";
@@ -7,13 +7,31 @@ import Wishlist from "..//../Images/Frame (2).svg";
 import search from "..//../Images/Frame.svg";
 import { ToastContainer, toast } from "react-toastify";
 
-const Header = () => {
+const Header = ({ onSubmitSearch }) => {
   const [searchTxt, setSearchTxt] = useState("");
-  
-  const handleChange = (e) => {
-    setSearchTxt(e.target.value);
-    console.log(searchTxt);
+  const [searchResult, setSearchResult] = useState([]);
+
+  const handleSearchChange = async () => {
+    const autoSearch = await fetch(
+      "http://suggestqueries.google.com/complete/search?client=firefox&q=" +
+        searchTxt
+    );
+    const json = await autoSearch.json();
+    setSearchResult(json[1]);
+    // console.log(json[1]);
   };
+
+  useEffect(() => {
+    handleSearchChange();
+  }, [searchTxt]);
+
+  const handleSearchItemClick = (query) => {
+    setSearchTxt(query);
+    setSearchResult([]);
+  };
+
+  // fetch("http://suggestqueries.google.com/complete/search?client=firefox&q=redmi");
+
   const token = localStorage.getItem("accessToken");
   const [isLogin, setIsLogin] = useState(token);
 
@@ -55,28 +73,47 @@ const Header = () => {
             </div>
             {/* center */}
             <div className="px-[28px]">
-              <form>
-                {/* <label
-                  for="default-search"
-                  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white "
-                >
-                  Search
-                </label> */}
-                <div className="relative">
-                  <input
-                    type="search"
-                    id="default-search"
-                    className="block w-[632px] h-11 px-5 py-3 opacity-60 bg-blue-200 bg-opacity-50 rounded justify-start items-center gap-[7px] text-neutral-800 text-base font-normal"
-                    placeholder="Search anything you want..."
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="submit"
-                    className="text-white absolute right-0 bottom-0 font-medium rounded-lg text-sm px-4 py-3 solid-blue-600"
-                  >
-                    <img src={search} alt="" />
-                  </button>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  onSubmitSearch(searchTxt);
+                }}
+              >
+                <div className=" flex">
+                  <div className="">
+                    <input
+                      type="search"
+                      id="default-search"
+                      className="block w-[632px] h-11 px-5 py-3 opacity-60 bg-blue-200 bg-opacity-50 rounded-l justify-start items-center gap-[7px] text-neutral-800 text-base font-normal"
+                      placeholder="Search anything you want..."
+                      onChange={(e) => setSearchTxt(e.target.value)}
+                      value={searchTxt}
+                    />
+                  </div>
+                  <div className="opacity-60 bg-blue-200 bg-opacity-50 rounded-r">
+                    <button
+                      type="submit"
+                      className="text-white right-0 bottom-0 font-medium rounded-lg text-sm px-4 py-2 solid-blue-600"
+                    >
+                      <img src={search} alt="" />
+                    </button>
+                  </div>
                 </div>
+                {searchResult.length !== 0 ? (
+                  <div className=" absolute z-50 bg-white p-4 rounded-md text-left w-[43rem]">
+                    {searchResult.map((text) => (
+                      <p
+                        className=" p-1 border-b-2 border-gray-100 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => handleSearchItemClick(text)}
+                        key={text}
+                      >
+                        {text}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <></>
+                )}
               </form>
             </div>
             {/* right */}
@@ -102,11 +139,11 @@ const Header = () => {
                   </li>
                 </button>
                 <li className="justify-start items-center gap-2 flex">
-                  <Link to = "/cart">
-                  <img src={cart} alt="" className="w-7 h-7 relative" />
-                  <div className="text-neutral-800 text-base font-normal">
-                    Cart
-                  </div>
+                  <Link to="/cart" className="flex">
+                    <img src={cart} alt="" className="w-7 h-7 relative" />
+                    <div className="text-neutral-800 text-base font-normal">
+                      Cart
+                    </div>
                   </Link>
                 </li>
                 <li className="justify-start items-center gap-2 flex">

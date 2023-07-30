@@ -3,10 +3,10 @@ import { path_url } from "../../config/config";
 
 export const CardHome = ({ price, title, imageUrl }) => {
   return (
-    <div className="">
+    <div className=" w-60 h-64">
       <div className="max-w-sm bg-white border border-zinc-500 rounded-lg shadow p-2 flex flex-col item-center ">
           <img
-            className="rounded-t-lg w-60 pb-2 hover:scale-105 transition ease-in-out"
+            className="rounded-t-lg h-48 object-contain pb-2 hover:scale-105 transition ease-in-out"
             src={path_url + imageUrl}
             alt=""
           />
