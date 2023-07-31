@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { path_url } from "../config/config";
 import Verifiy from "./components/Verify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = () => {
   const productId = useParams();
@@ -34,8 +36,15 @@ const Product = () => {
     console.log(token);
     try {
       
-      const response = await axios.post(`${path_url}/cart/items`,data);
+      const response = await axios.post(`${path_url}/cart/items`,data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type":"application/json",
+        },
+        withCredentials: true,
+      });
       console.log(response);
+      toast.success("Item added to cart");
     } catch (error) {
       console.log('Error adding product to cart:', error);
     }
@@ -334,6 +343,18 @@ const Product = () => {
           <div></div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };

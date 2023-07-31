@@ -9,12 +9,19 @@ import Verifiy from "./components/Verify";
 const Cart = () => {
  
   const [cart, setCart] = useState({});
-  const [items,setItems] = useState([])
+  const [items,setItems] = useState([]);
+  const [updateCount, setUpdateCount] = useState(0);
+
   // Function to fetch the cart data from the server
   const fetchCart = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await axios.get(`${path_url}/cart`);
+      const response = await axios.get(`${path_url}/cart`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true
+      });
       setCart(response?.data?.cart);
      
     } catch (error) {
@@ -29,9 +36,14 @@ console.log(cart);
     const body = { "productId": id,
     "quantity": quantity}
     const token = localStorage.getItem("accessToken");
-    const response = await axios.patch(`${path_url}/cart/items`,body);
+    const response = await axios.patch(`${path_url}/cart/items`,body,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true
+    });
    console.log(response?.data);
-   
+   setUpdateCount((prevCount) => prevCount + 1);
   } catch (error) {
     console.error('Error fetching cart:', error);
   }
@@ -41,11 +53,12 @@ console.log(cart);
     // Fetch the cart data when the component mounts
     fetchCart();
       
-  }, []);
+  },[updateCount]);
   useEffect(() => {
     setItems(cart?.items || []); 
    // Use an empty array as fallback if cart.items is undefined
   }, [cart]);
+
 
   return (
     <>
@@ -317,9 +330,9 @@ console.log(cart);
           </div>
         </div>
 
-        <CardSection Name="Products from your wishlist" />
+        {/* <CardSection Name="Products from your wishlist" />
 
-        <CardSection Name="Related to products you viewed" />
+        <CardSection Name="Related to products you viewed" /> */}
       </div>
       <div className="mt-5"></div>
     </>
