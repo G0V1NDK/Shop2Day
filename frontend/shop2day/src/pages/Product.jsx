@@ -8,6 +8,7 @@ import changeIcon from "../Images/published_with_changes_FILL0_wght400_GRAD0_ops
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { path_url } from "../config/config";
+import Verifiy from "./components/Verify";
 
 const Product = () => {
   const productId = useParams();
@@ -48,6 +49,7 @@ const Product = () => {
 
   return (
     <>
+    <Verifiy/>
       <div className=" my-8 flex flex-col justify-center align-middle items-center">
         <div className=" w-10/12">
           {/* upper */}

@@ -8,7 +8,7 @@ import Verify from "./components/Verify";
 const Home = () => {
   return (
     <>
-      {/* <Verify /> */}
+      <Verify />
 
       <Carousel />
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { path_url } from "../config/config";
 import SellerTable from "./components/SellerTable";
+import Verifiy from "./components/Verify";
 
 export const PopupForm = ({ onClose }) => {
 
@@ -245,6 +246,8 @@ const Seller = () => {
   console.log(sellerData);
 
   return (
+    <>
+    <Verifiy/>
     <div className="sm:px-6 w-full">
       {/* heading */}
       <div className="px-4 md:px-10 py-4 md:py-7">
@@ -314,6 +317,8 @@ const Seller = () => {
         </div>
       </div>
     </div>
+    
+    </>
   );
 };
 
