@@ -34,13 +34,7 @@ const Product = () => {
     console.log(token);
     try {
       
-      const response = await axios.post(`${path_url}/cart/items`,data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type":"application/json",
-        },
-        withCredentials: true,
-      });
+      const response = await axios.post(`${path_url}/cart/items`,data);
       console.log(response);
     } catch (error) {
       console.log('Error adding product to cart:', error);

@@ -36,7 +36,7 @@ const CardSection = ({ queryResult }) => {
     if (queryResult === "") {
       setProducts(allProducts);
     } else if(filteredProducts.length === 0){
-      alert("NO PRODUCTS AVAILABLE RIGHT NOW!!");
+      // alert("NO PRODUCTS AVAILABLE RIGHT NOW!!");
       setProducts(allProducts);
     } else {
       setProducts(filteredProducts);

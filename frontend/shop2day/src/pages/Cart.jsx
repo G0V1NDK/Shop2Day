@@ -14,12 +14,7 @@ const Cart = () => {
   const fetchCart = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await axios.get(`${path_url}/cart`,{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true
-      });
+      const response = await axios.get(`${path_url}/cart`);
       setCart(response?.data?.cart);
      
     } catch (error) {
@@ -34,12 +29,7 @@ console.log(cart);
     const body = { "productId": id,
     "quantity": quantity}
     const token = localStorage.getItem("accessToken");
-    const response = await axios.patch(`${path_url}/cart/items`,body,{
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      withCredentials: true
-    });
+    const response = await axios.patch(`${path_url}/cart/items`,body);
    console.log(response?.data);
    
   } catch (error) {
