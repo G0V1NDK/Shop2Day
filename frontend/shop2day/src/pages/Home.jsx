@@ -5,7 +5,8 @@ import Carousel from "./components/Carousel";
 import CardSection from "./components/CardSection";
 import Verify from "./components/Verify";
 
-const Home = () => {
+const Home = ({queryResult}) => {
+
   return (
     <>
       <Verify />
@@ -13,7 +14,7 @@ const Home = () => {
       <Carousel />
 
       <div className="flex justify-center">
-        <CardSection />
+        <CardSection queryResult={queryResult} />
       </div>
 
     </>
