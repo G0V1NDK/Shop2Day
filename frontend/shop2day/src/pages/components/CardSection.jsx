@@ -25,9 +25,7 @@ const CardSection = ({ queryResult }) => {
 
   async function getProducts() {
     try {
-      const myData = await axios.get(`${path_url}/products`, {
-        withCredentials: true,
-      });
+      const myData = await axios.get(`${path_url}/products`);
       setAllProducts(myData?.data?.products);
     } catch (err) {
       console.log(err.message);

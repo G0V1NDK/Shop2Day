@@ -33,7 +33,7 @@ const Login = () => {
 
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        const response = await axios.post(`${path_url}/login`, values,{withCredentials: true});
+        const response = await axios.post(`${path_url}/login`, values);
 
         if (response.status === 200) {
           console.log(response);
