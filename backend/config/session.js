@@ -23,7 +23,7 @@ function createSessionConfig() {
     store: createSessionStore(),
     cookie: {
       maxAge: 2 * 24 * 60 * 60 * 1000,
-      secure: false,
+      secure: true,
     },
   };
 }
