@@ -9,7 +9,7 @@ const Home = ({queryResult}) => {
 
   return (
     <>
-      {/* <Verify /> */}
+      <Verify />
 
       <Carousel />
 

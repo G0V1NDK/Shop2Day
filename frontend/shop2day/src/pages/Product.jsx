@@ -8,6 +8,9 @@ import changeIcon from "../Images/published_with_changes_FILL0_wght400_GRAD0_ops
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { path_url } from "../config/config";
+import Verifiy from "./components/Verify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = () => {
   const productId = useParams();
@@ -41,6 +44,7 @@ const Product = () => {
         withCredentials: true,
       });
       console.log(response);
+      toast.success("Item added to cart");
     } catch (error) {
       console.log('Error adding product to cart:', error);
     }
@@ -48,6 +52,7 @@ const Product = () => {
 
   return (
     <>
+    <Verifiy/>
       <div className=" my-8 flex flex-col justify-center align-middle items-center">
         <div className=" w-10/12">
           {/* upper */}
@@ -338,6 +343,18 @@ const Product = () => {
           <div></div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };
