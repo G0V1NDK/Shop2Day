@@ -2,7 +2,7 @@ function enableCors(req, res, next) {
   const allowedOrigins = [
     "http://localhost:5173",
     "https://shop-2-day.vercel.app",
-    "https://shop-2-day.onrender.com",
+    "https://shop2-nj7r52sfa-g0v1nd.vercel.app",
   ];
 
   const origin = req.headers.origin;
