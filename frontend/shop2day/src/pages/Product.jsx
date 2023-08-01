@@ -41,7 +41,7 @@ const Product = () => {
           Authorization: `Bearer ${token}`,
           "Content-Type":"application/json",
         },
-        withCredentials: true,
+        //withCredentials: true,
       });
       console.log(response);
       toast.success("Item added to cart");
