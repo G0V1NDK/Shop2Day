@@ -1,12 +1,16 @@
 function enableCors(req, res, next) {
-  const allowedOrigins = ['http://localhost:5173', 'https://shop-2-day.vercel.app'];
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "https://shop-2-day.vercel.app",
+    "https://shop-2-day.onrender.com",
+  ];
 
   const origin = req.headers.origin;
 
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
-  
+
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,POST,PATCH,DELETE,OPTIONS"
