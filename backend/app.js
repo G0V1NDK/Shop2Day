@@ -5,7 +5,7 @@ const db = require('./data/database');
 const expressSession = require("express-session");
 const createSessionConfig = require("./config/session");
 
-const enableCors = require('./middlewares/cors');
+const enableCors = require("cors");
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const notFoundMiddleware = require('./middlewares/not-found');
 const cartMiddleware = require("./middlewares/cart");
@@ -19,7 +19,7 @@ const cartRoutes = require("./routes/cart-routes");
 
 const app = express();
 
-app.use(enableCors);
+app.use(enableCors());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
