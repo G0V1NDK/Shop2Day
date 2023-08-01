@@ -19,12 +19,13 @@ function createSessionConfig() {
   return {
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: createSessionStore(),
     cookie: {
       maxAge: 2 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure: true,
+      domain: "https://shop2-nj7r52sfa-g0v1nd.vercel.app",
     },
   };
 }
