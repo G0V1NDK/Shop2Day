@@ -66,7 +66,8 @@ export const PopupForm = ({ onClose }) => {
             Authorization: `Bearer ${token}`,
             "Content-Type":
               "multipart/form-data; boundary=<calculated when request is sent>",
-          }
+          },
+          withCredentials: true
         });
         console.log(response);
       } catch (err) {
@@ -232,7 +233,8 @@ const Seller = () => {
       const response = await axios.get(`${path_url}/seller/products`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        }
+        },
+        withCredentials: true
       });
       setSellerData(response?.data?.products);
       // console.log(response);

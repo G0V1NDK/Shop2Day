@@ -59,7 +59,8 @@ export const PopupForm = ({ onClose ,seller}) => {
             Authorization: `Bearer ${token}`,
             "Content-Type":
               "multipart/form-data; boundary=<calculated when request is sent>",
-          }
+          },
+          withCredentials: true
         });
         console.log(response);
       } catch (err) {
@@ -238,7 +239,8 @@ const [seller,setSeller] = useState({});
         {
           headers: {
             Authorization: `Bearer ${token}`,
-          }
+          },
+          withCredentials: true
         }
       );
       console.log(deleteProduct);

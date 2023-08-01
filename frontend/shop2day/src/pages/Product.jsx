@@ -22,7 +22,7 @@ const Product = () => {
 
   async function getProducts() {
     try {
-      const myData = await axios.get(`${path_url}/products/${productId.id}`);
+      const myData = await axios.get(`${path_url}/products/${productId.id}`, {withCredentials: true});
       setProducts(myData?.data?.product);
     } catch (err) {
       console.log(err.message);
