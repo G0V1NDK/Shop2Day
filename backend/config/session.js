@@ -23,7 +23,8 @@ function createSessionConfig() {
     store: createSessionStore(),
     cookie: {
       maxAge: 2 * 24 * 60 * 60 * 1000,
-      secure: true,
+      sameSite: 'none', // Add this line to set SameSite attribute
+      secure: true,     // Make sure to set secure to true when using SameSite: None
     },
   };
 }
