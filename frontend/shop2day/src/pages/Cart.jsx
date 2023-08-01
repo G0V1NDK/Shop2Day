@@ -20,7 +20,7 @@ const Cart = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        //withCredentials: true
+        withCredentials: true
       });
       setCart(response?.data?.cart);
      
@@ -40,7 +40,7 @@ console.log(cart);
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      //withCredentials: true
+      withCredentials: true
     });
    console.log(response?.data);
    setUpdateCount((prevCount) => prevCount + 1);
