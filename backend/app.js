@@ -21,6 +21,10 @@ const app = express();
 
 app.use(enableCors);
 
+// Add this line to set trust proxy
+app.set("trust proxy", 1);
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
