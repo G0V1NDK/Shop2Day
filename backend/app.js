@@ -24,7 +24,6 @@ app.use(enableCors);
 // Add this line to set trust proxy
 app.set("trust proxy", 1);
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -34,7 +33,7 @@ app.use(expressSession(sessionConfig));
 app.use(cartMiddleware);
 app.use(updateCartPricesMiddleware);
 
-app.use('/products/assets', express.static('product-data'));
+app.use('/products/assets', express.static('public'));
 
 app.use(authRoutes);
 app.use(productsRoutes);
