@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Carousel.scss";
 export const Carousel = () => {
   const slides = [
     {
@@ -40,8 +40,8 @@ export const Carousel = () => {
 
   return (
     <div
-      className="max-w-[1400px] h-96 w-11/12 m-auto pt-8 pb-5 relative group"
-      style={{ width: "84rem" }}
+      className=" h-96 w-11/12 m-auto pt-8 pb-5 relative group crasousel"
+      
     >
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}

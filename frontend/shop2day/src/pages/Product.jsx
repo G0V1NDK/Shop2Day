@@ -11,8 +11,9 @@ import { path_url } from "../config/config";
 import Verifiy from "./components/Verify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CardSection from "./components/CardSection";
 
-const Product = () => {
+const Product = ({queryResult}) => {
   const productId = useParams();
   const [products, setProducts] = useState([]);
 
@@ -340,7 +341,9 @@ const Product = () => {
             </div>
           </div>
           {/* lower*/}
-          <div></div>
+          <div className="flex justify-start mt-2 w-full">
+  <CardSection queryResult={queryResult} />
+</div>
         </div>
       </div>
       <ToastContainer
