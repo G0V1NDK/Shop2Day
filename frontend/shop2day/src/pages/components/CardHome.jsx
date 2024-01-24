@@ -17,7 +17,7 @@ export const CardHome = ({ price, title, imageUrl }) => {
           <img
             className="rounded-t-lg h-48 object-contain pb-2 hover:scale-105 transition ease-in-out"
             src={path_url + imageUrl}
-            alt=""
+            alt=" Image was not uploaded"
           />
         <div className="flex-col justify-start items-center gap-0.5 inline-flex">
           <h5 className="self-stretch text-center text-neutral-800 text-base font-normal">

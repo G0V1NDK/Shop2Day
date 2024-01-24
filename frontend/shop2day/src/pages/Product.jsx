@@ -63,6 +63,7 @@ const Product = ({queryResult}) => {
               <img
                 className=" rounded p-5 bg-white"
                 src={path_url + products.imageUrl}
+                alt=" Image was not uploaded"
               />
               {/* shopping btns */}
               <div className="flex justify-around my-4">
