@@ -1,6 +1,6 @@
 import React from "react";
 import CardSection from "./components/CardSection";
-import Laptop from "../Images/Rectangle 3069.png";
+import Smile from "../Images/smile.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { path_url } from "../config/config";
@@ -249,7 +249,19 @@ console.log(cart);
               </div>
           ))
         ) : (
-          <p>No Items in cart</p>
+          <div className="flex items-center gap-2">
+            <div className="icon-img">
+<img src={Smile} alt="" />
+            </div>
+            <p className="text" style={{color:" var(--Black, #262626)",
+/* Heading 1- 28px */
+fontFamily: "Montserrat",
+fontSize: "28px",
+fontStyle: "normal",
+fontWeight: "600",
+lineHeight: "normal",
+letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
+          </div>
         )}
              
             </div>
@@ -286,7 +298,7 @@ console.log(cart);
                   </div>
                 </div>
                 <div className="text-right text-neutral-800 text-base font-medium ">
-                  {cart.totalPrice*1.2}
+                { (cart.totalPrice * 1.2).toFixed(1) }
                 </div>
               </div>
               <div className="Frame_3399 flex items-start gap-28 w-19">
@@ -298,7 +310,7 @@ console.log(cart);
                     -
                   </div>
                   <div className="16188 text-right text-lime-500 text-base font-medium">
-                   {cart.totalPrice*0.2}
+                  { (cart.totalPrice * 0.2).toFixed(1) }
                   </div>
                 </div>
               </div>

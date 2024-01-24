@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { path_url } from "../config/config";
 import SellerTable from "./components/SellerTable";
 import Verifiy from "./components/Verify";
+import logo from "../Images/logo s2y.svg";
+import { Link } from "react-router-dom";
 
 export const PopupForm = ({ onClose }) => {
 
@@ -249,8 +251,18 @@ const Seller = () => {
     <>
     <Verifiy/>
     <div className="sm:px-6 w-full">
+    <Link to={"/"}>
+      <div className="content-header">
+      
+       <div className="logo-img">
+        <img src={logo} alt="" />
+       </div>
+       <span className="logo-heading">Shop2Day</span>
+       
+      </div>
+      </Link>
       {/* heading */}
-      <div className="px-4 md:px-10 py-4 md:py-7">
+      <div className="px-4 md:px-10 pb-4 md:pb-7 pt-2 md:pt-6">
         <div className="flex items-center justify-between">
           <p
             tabIndex="0"

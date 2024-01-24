@@ -57,7 +57,11 @@ const CardSection = ({ queryResult }) => {
             </div>
           </div>
         </div>
-        <div className="content-body flex flex-wrap justify-around gap-3 mb-12 ml-6">
+        <div className="content-body flex flex-wrap justify-around gap-3 mb-12 ml-6" style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+    gap: '20px',
+  }}>
           {products.map((res) => (
             <Link to={"/product/" + res.id} key={res.id}>
               <CardHome {...res} />

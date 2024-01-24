@@ -1,0 +1,48 @@
+@import "../../css-config/mixins.scss";
+.custom{
+    display: flex;
+    gap: 1rem;
+ width: 100%;
+ background: #FFF;
+}
+.center{
+    width: 60%;
+    @include lg{
+        width: 70%
+    }
+}
+.search{
+    width: 100%;
+    
+}
+.right{
+    display: flex;
+    gap: 1rem;
+    width: 25%;
+    @include lg{
+        width: 80%
+    }
+
+}
+.search-wrap{
+    width: 90%;
+}
+.logo-button{
+    display: flex;
+    gap: 0.5rem;
+}
+.contents-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFF;
+}
+.lower{
+    width: 100%;
+}
+.left{
+    width: 15%;
+    @include lg{
+        width: 20%
+    }
+}

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignUp from "../src/pages/SignUp";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import SignUp from "../src/pages/SignUp/SignUp.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Login from "./pages/Login/Login.jsx";
 import Seller from "./pages/Seller";
 import Product from "./pages/Product";
-import Header from "./pages/components/Header";
+import Header from "./pages/components/Header/Header.jsx";
 import Footer from "./pages/components/Footer";
 import Cart from "./pages/Cart";
 
@@ -36,7 +36,7 @@ export const App = () => {
             element={
               <>
                 <Header onSubmitSearch={handleSearchSubmit} />
-                <Home queryResult={queryResult} /> <Footer />{" "}
+                <Home queryResult={queryResult} /> {" "}
               </>
             }
           />
@@ -47,7 +47,7 @@ export const App = () => {
             path="/product/:id"
             element={
               <Layout>
-                <Product />
+                <Product queryResult={queryResult}/>
               </Layout>
             }
           />

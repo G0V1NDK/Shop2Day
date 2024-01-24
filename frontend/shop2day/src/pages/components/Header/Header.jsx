@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "..//../Images/logo s2y.svg";
-import user from "..//../Images/user.svg";
-import cart from "..//../Images/Frame (1).svg";
-import Wishlist from "..//../Images/Frame (2).svg";
-import search from "..//../Images/Frame.svg";
+import logo from "../../../Images/logo s2y.svg";
+import user from "../../../Images/user.svg";
+import cart from "../../../Images/Frame (1).svg";
+import Wishlist from "../../../Images/Frame (2).svg";
+import search from "../../../Images/Frame.svg";
 import { ToastContainer, toast } from "react-toastify";
+import "./Header.scss";
 
 const Header = ({ onSubmitSearch }) => {
   const [searchTxt, setSearchTxt] = useState("");
@@ -45,13 +46,14 @@ const Header = ({ onSubmitSearch }) => {
 
   return (
     <>
-      <div>
-        <div>
+     
+        
           {/* upper */}
           {/* Main Nav bar*/}
-          <div className=" flex flex-row justify-between text-center items-center px-[100px] py-[20px]">
+          <div className="contents-header drop-shadow-lg ">
+          <div className=" flex flex-row justify-between text-center items-center px-8 pt-5 custom">
             {/* left */}
-            <div className="">
+            <div className="left">
               {/* logo */}
               <Link to={"/"} className="flex w-[191px] justify-around">
                 <div className="">
@@ -72,7 +74,7 @@ const Header = ({ onSubmitSearch }) => {
               </Link>
             </div>
             {/* center */}
-            <div className="px-[28px]">
+            <div className="px-[28px] center">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -80,17 +82,17 @@ const Header = ({ onSubmitSearch }) => {
                 }}
               >
                 <div className=" flex">
-                  <div className="">
+                  <div className="search-wrap">
                     <input
                       type="search"
                       id="default-search"
-                      className="block w-[632px] h-11 px-5 py-3 opacity-60 bg-blue-200 bg-opacity-50 rounded-l justify-start items-center gap-[7px] text-neutral-800 text-base font-normal"
+                      className="block h-11 px-5 py-3 opacity-60 bg-blue-200 bg-opacity-50 rounded-l justify-start items-center gap-[7px] text-neutral-800 text-base font-normal search"
                       placeholder="Search anything you want..."
                       onChange={(e) => setSearchTxt(e.target.value)}
                       value={searchTxt}
                     />
                   </div>
-                  <div className="opacity-60 bg-blue-200 bg-opacity-50 rounded-r">
+                  <div className="opacity-60 bg-blue-200 bg-opacity-50 rounded-r button-wrap">
                     <button
                       type="submit"
                       className="text-white right-0 bottom-0 font-medium rounded-lg text-sm px-4 py-2 solid-blue-600"
@@ -117,10 +119,11 @@ const Header = ({ onSubmitSearch }) => {
               </form>
             </div>
             {/* right */}
-            <div className="">
-              <ul className=" flex justify-center items-start gap-8 text-center">
-                <button>
+            <div className="right">
+              <ul className=" flex justify-center items-start gap-8 text-center w-full">
+                
                   <li className="justify-start items-center gap-2 flex">
+                  <button className="logo-button">
                     <img src={user} alt="" className="w-7 h-7 relative" />
                     {isLogin ? (
                       <div
@@ -136,10 +139,11 @@ const Header = ({ onSubmitSearch }) => {
                         </div>
                       </Link>
                     )}
+                    </button>
                   </li>
-                </button>
+                
                 <li className="justify-start items-center gap-2 flex">
-                  <Link to="/cart" className="flex">
+                  <Link to="/cart" className="flex gap-2">
                     <img src={cart} alt="" className="w-7 h-7 relative" />
                     <div className="text-neutral-800 text-base font-normal">
                       Cart
@@ -156,47 +160,48 @@ const Header = ({ onSubmitSearch }) => {
             </div>
           </div>
           {/* lower */}
-          <div className=" bg-slate-100 drop-shadow-lg">
-            <ul className=" flex flex-row justify-between px-[100px]">
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+          <div className="px-8 lower">
+            <ul className=" flex flex-row  bg-white gap-12 py-4">
+              <li className="px-4 py-4  justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
                   Men’s
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4 justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
                   Women's
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4  justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
                   Electronics
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4 justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
-                  Home and Furniture
+                  Home & Furniture
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4 justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
-                  TVs and Appliances
+                  TVs & Appliances
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4 justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
-                  Baby and Kids
+                  Baby & Kids
                 </div>
               </li>
-              <li className="px-5 py-4 justify-center items-start gap-1 flex">
+              <li className="px-4 py-4 justify-center items-center gap-1 flex">
                 <div className="text-neutral-800 text-base font-medium">
-                  Books, Sports and More
+                  Books, Sports & More
                 </div>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
+        
+          </div>
+          
       <ToastContainer
         position="top-right"
         autoClose={5000}
