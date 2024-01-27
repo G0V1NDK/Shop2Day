@@ -7,7 +7,7 @@ import Seller from "./pages/Seller";
 import Product from "./pages/product/Product.jsx";
 import Header from "./pages/components/Header/Header.jsx";
 import Footer from "./pages/components/Footer";
-import Cart from "./pages/Cart/Cart.jsx";
+import Cart from "./pages/cart/Cart.jsx";
 
 export const Layout = ({children}) => {
 
