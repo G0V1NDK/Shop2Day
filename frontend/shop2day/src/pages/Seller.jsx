@@ -251,7 +251,7 @@ const Seller = () => {
     <>
     <Verifiy/>
     <div className="sm:px-6 w-full">
-    <Link to={"/"}>
+    <Link to={""}>
       <div className="content-header">
       
        <div className="logo-img">

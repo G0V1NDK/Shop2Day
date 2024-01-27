@@ -5,6 +5,7 @@ import user from "../../../Images/user.svg";
 import cart from "../../../Images/Frame (1).svg";
 import Wishlist from "../../../Images/Frame (2).svg";
 import search from "../../../Images/Frame.svg";
+import hamburger from "../../../Images/hamburger.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "./Header.scss";
 
@@ -51,7 +52,7 @@ const Header = ({ onSubmitSearch }) => {
           {/* upper */}
           {/* Main Nav bar*/}
           <div className="contents-header drop-shadow-lg ">
-          <div className=" flex flex-row justify-between text-center items-center px-8 pt-5 custom">
+          <div className="  justify-between text-center items-center px-8 pt-5 custom">
             {/* left */}
             <div className="left">
               {/* logo */}
@@ -74,7 +75,7 @@ const Header = ({ onSubmitSearch }) => {
               </Link>
             </div>
             {/* center */}
-            <div className="px-[28px] center">
+            <div className=" center">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -127,14 +128,14 @@ const Header = ({ onSubmitSearch }) => {
                     <img src={user} alt="" className="w-7 h-7 relative" />
                     {isLogin ? (
                       <div
-                        className="text-neutral-800 text-base font-normal"
+                        className="text-neutral-800 text-base font-normal logout"
                         onClick={Logout}
                       >
                         Logout
                       </div>
                     ) : (
                       <Link to="/login">
-                        <div className="text-neutral-800 text-base font-normal">
+                        <div className="text-neutral-800 text-base font-normal logout">
                           Login
                         </div>
                       </Link>
@@ -145,14 +146,20 @@ const Header = ({ onSubmitSearch }) => {
                 <li className="justify-start items-center gap-2 flex">
                   <Link to="/cart" className="flex gap-2">
                     <img src={cart} alt="" className="w-7 h-7 relative" />
-                    <div className="text-neutral-800 text-base font-normal">
+                    <div className="text-neutral-800 text-base font-normal cart">
                       Cart
                     </div>
                   </Link>
                 </li>
                 <li className="justify-start items-center gap-2 flex">
                   <img src={Wishlist} alt="" className="w-7 h-7 relative" />
-                  <div className="text-neutral-800 text-base font-normal">
+                  <div className="text-neutral-800 text-base font-normal wishlist">
+                    Wishlist
+                  </div>
+                </li>
+                <li className="justify-start items-center gap-2  hamburger">
+                  <img src={hamburger} alt="" className="w-7 h-7 relative" />
+                  <div className="text-neutral-800 text-base font-normal wishlist">
                     Wishlist
                   </div>
                 </li>

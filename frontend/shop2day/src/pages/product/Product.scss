@@ -1,0 +1,30 @@
+@import "../css-config/mixins.scss";
+.uppers{
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+    @include md{
+        flex-direction: column;
+    }
+    
+}
+.left{
+    width: 40%;
+    @include md{
+        width: 100%;
+    }
+}
+.right{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    @include md{
+        width: 100%;
+    }
+}
+.customs{
+    padding: 0 5rem 0 5rem;
+    @include sm{
+        padding: 0 1rem 0 1rem;
+    }
+}

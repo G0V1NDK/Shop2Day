@@ -4,15 +4,16 @@ import SignUp from "../src/pages/SignUp/SignUp.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Seller from "./pages/Seller";
-import Product from "./pages/Product";
+import Product from "./pages/product/Product.jsx";
 import Header from "./pages/components/Header/Header.jsx";
 import Footer from "./pages/components/Footer";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart/Cart.jsx";
 
 export const Layout = ({children}) => {
 
   return (
     <>
+    
       <Header />
       {children}
       <Footer />

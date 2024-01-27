@@ -1,10 +1,12 @@
 import React from "react";
-import CardSection from "./components/CardSection";
-import Smile from "../Images/smile.svg";
+import CardSection from "../components/CardSection";
+import Smile from "../../Images/smile.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { path_url } from "../config/config";
-import Verifiy from "./components/Verify";
+import { path_url } from "../../config/config";
+import Verifiy from "../components/Verify";
+import "./cart.scss";
+import Footer from "../components/Footer";
 
 const Cart = () => {
  
@@ -63,16 +65,18 @@ console.log(cart);
   return (
     <>
     <Verifiy/>
-    <div className="mb-5"></div>
-      <div className="cart-page flex flex-col justify-center items-center gap-8 overflow-x-hidden overflow-y-hidden">
-        <div className="Frame_3405 flex items-start justify-center gap-5 w-11/12">
+  
+      <div className="cart-page flex flex-col justify-center items-center gap-8  px-16 py-16 md:px-8 w-full">
+        <div className="Frame_3405 flex items-start justify-center gap-5 w-full content"  style={{ overflowY: items.length > 2 ? 'scroll' : 'hidden' }}>
           <div
-            className="Frame_3396 flex flex-col items-start gap-8 p-8"
-            style={{ "borderRadius": "0.25rem", background: "#FFF" }}
+            className={`Frame_3396 flex flex-col items-start gap-8 p-8 items ${
+              items.length > 2 ? 'scrollable-container' : ''
+            }`}
+            style={{ "borderRadius": "0.25rem", background: "#FFF", }}
           >
             <div
               className="Frame_3395 flex items-end gap-x-96"
-              style={{ width: "49.125rem" }}
+              style={{ width: "100%" }}
             >
               <h1
                 className="text-2xl font-semibold leading-normal tracking-tight font-montserrat"
@@ -92,15 +96,15 @@ console.log(cart);
                   "boxShadow": " 0px 7px 20px 0px rgba(40, 41, 61, 0.08)",
                 }}
               >
-                <div className="Frame_3389 flex items-center  gap-3">
-                  <div className="3069  rounded-md bg-lightgray bg-center bg-cover">
+                <div className="Frame_3389 flex items-center  gap-3 ">
+                  <div className="3069  rounded-md bg-lightgray bg-center bg-cover" style={{width: "20%"}}>
                     <img src={path_url + item?.product?.imageUrl} alt="" />
                   </div>
-                  <div className="Frame_3388 flex flex-col items-start gap-3">
+                  <div className="Frame_3388 flex flex-col items-start gap-3" style={{width: "80%"}}>
                     <div className="Frame_3387 flex flex-col items-start gap-1">
                       <div
                         className=" text-black font-montserrat text-base font-normal leading-6"
-                        style={{ width: "31.5rem" }}
+                        
                       >
                         {item?.product?.title}
                       </div>
@@ -267,10 +271,10 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
             </div>
           </div>
           <div
-            className="3403 flex flex-col items-start gap-5 w-[23.125rem] p-8"
-            style={{ "borderRadius": "0.25rem", background: "#FFF" }}
+            className="3403 flex flex-col items-start gap-5  p-8 checkout"
+            style={{ "borderRadius": "0.25rem", background: "#FFF",  }}
           >
-            <div className="text-[#262626] font-montserrat text-xl font-semibold leading-normal tracking-[0.0125rem]">
+            <div className="text-[#262626] font-montserrat text-xl font-semibold leading-normal tracking-[0.0125rem] w-full">
               Price Details
             </div>
 
@@ -284,10 +288,10 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
               <div className="Frame_3400"></div>
             </div> */}
             <div
-              className="Frame_3402 flex flex-col items-start gap-5 p-2  pb-4"
-              style={{ "borderBottom": "1px solid var(--grey, #82868C)" }}
+              className="Frame_3402 flex flex-col items-start gap-5 p-2  pb-4 w-full"
+              style={{ "borderBottom": "1px solid var(--grey, #82868C)"}}
             >
-              <div className="Frame_3398 flex items-start gap-28 w-19">
+              <div className="Frame_3398 flex items-start justify-between w-full">
                 <div className="Frame3397 flex items-center gap-1">
                   <div className=" text-neutral-800 text-base font-medium">
                     Total MRP
@@ -301,7 +305,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                 { (cart.totalPrice * 1.2).toFixed(1) }
                 </div>
               </div>
-              <div className="Frame_3399 flex items-start gap-28 w-19">
+              <div className="Frame_3399 flex items-start justify-between w-full">
                 <div className=" text-neutral-800 text-base font-medium">
                   Total Discount
                 </div>
@@ -314,7 +318,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                   </div>
                 </div>
               </div>
-              <div className="Frame_3400 flex items-start gap-28 w-19">
+              <div className="Frame_3400 flex items-start justify-between w-full">
                 <div className="DeliveryCharges text-neutral-800 text-base font-medium">
                   Delivery Charges
                 </div>
@@ -323,7 +327,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                 </div>
               </div>
             </div>
-            <div className="Frame_3401 flex items-start gap-28 w-19">
+            <div className="Frame_3401 flex items-start justify-between w-full">
               <div className="text-[#262626] font-montserrat text-lg font-semibold leading-normal">
                 Total Amount
               </div>
@@ -332,7 +336,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
               </div>
             </div>
             <button
-              className="flex items-center justify-center gap-2 p-3 w-80"
+              className="flex items-center justify-center gap-2 p-3 w-full"
               style={{ "borderRadius": "0.25rem", background: "#FF7A22" }}
             >
               <div className="text-[#FFF] text-center font-montserrat text-base font-medium leading-normal">
@@ -345,8 +349,11 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
         {/* <CardSection Name="Products from your wishlist" />
 
         <CardSection Name="Related to products you viewed" /> */}
+
+        
+       
       </div>
-      <div className="mt-5"></div>
+     
     </>
   );
 };
