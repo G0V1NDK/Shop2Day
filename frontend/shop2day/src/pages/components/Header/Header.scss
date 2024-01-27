@@ -1,15 +1,21 @@
 @import "../../css-config/mixins.scss";
 .custom{
     display: flex;
+    flex-direction: row;
     gap: 1rem;
  width: 100%;
  background: #FFF;
+ @include md{
+    padding-bottom: 2rem;
+ }
+ @include sm {
+    display: flex;
+    flex-direction: column;
+ }
 }
 .center{
-    width: 60%;
-    @include lg{
-        width: 70%
-    }
+    width: 100%;
+   
 }
 .search{
     width: 100%;
@@ -39,10 +45,34 @@
 }
 .lower{
     width: 100%;
+    @include md {
+display: none;
+    }
 }
 .left{
     width: 15%;
     @include lg{
         width: 20%
+    }
+}
+.logout{
+    @include md{
+        display: none;
+    }
+}
+.cart{
+    @include md{
+        display: none;
+    }
+}
+.wishlist{
+    @include md{
+        display: none;
+    }
+}
+.hamburger{
+    display: none;
+    @include md{
+        display: flex;
     }
 }

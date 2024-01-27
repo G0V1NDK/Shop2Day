@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import shareIcon from "../Images/share.svg";
-import heartIcon from "../Images/heart.svg";
-import deliveryIcon from "../Images/Delivery.svg";
-import lockIcon from "../Images/lock.svg";
-import policyIcon from "../Images/policy_FILL0_wght400_GRAD0_opsz48 1.svg";
-import changeIcon from "../Images/published_with_changes_FILL0_wght400_GRAD0_opsz48 1.svg";
+import shareIcon from "../../Images/share.svg";
+import heartIcon from "../../Images/heart.svg";
+import deliveryIcon from "../../Images/Delivery.svg";
+import lockIcon from "../../Images/lock.svg";
+import policyIcon from "../../Images/policy_FILL0_wght400_GRAD0_opsz48 1.svg";
+import changeIcon from "../../Images/published_with_changes_FILL0_wght400_GRAD0_opsz48 1.svg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { path_url } from "../config/config";
-import Verifiy from "./components/Verify";
+import { path_url } from "../../config/config";
+import Verifiy from "../components/Verify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CardSection from "./components/CardSection";
+import CardSection from "../components/CardSection";
+import "./Product.scss";
 
 const Product = ({queryResult}) => {
   const productId = useParams();
@@ -55,28 +56,28 @@ const Product = ({queryResult}) => {
     <>
     <Verifiy/>
       <div className=" my-8 flex flex-col justify-center align-middle items-center">
-        <div className=" w-10/12">
+        <div className=" w-full customs">
           {/* upper */}
-          <div className="flex ">
+          <div className="flex uppers">
             {/* left */}
-            <div className=" w-2/5 mr-3">
+            <div className=" left">
               <img
                 className=" rounded p-5 bg-white"
                 src={path_url + products.imageUrl}
                 alt=" Image was not uploaded"
               />
               {/* shopping btns */}
-              <div className="flex justify-around my-4">
-                <button className=" px-12 py-3 bg-amber-400 rounded justify-center items-centerinline-flex text-center text-white text-2xl font-semibold tracking-tight" onClick={handleCart}>
+              <div className="flex justify-around my-4 gap-4">
+                <button className=" px-12 py-3 bg-amber-400 rounded justify-center items-centerinline-flex text-center text-white text-2xl font-semibold tracking-tight" style={{width: "50%"}} onClick={handleCart}>
                   Add to cart
                 </button>
-                <button className=" px-12 py-3 bg-orange-500 rounded justify-center items-center flex text-center text-white text-2xl font-semibold tracking-tight">
+                <button className=" px-12 py-3 bg-orange-500 rounded justify-center items-center flex text-center text-white text-2xl font-semibold tracking-tight" style={{width: "50%"}}>
                   Buy Now
                 </button>
               </div>
             </div>
             {/* right */}
-            <div className=" w-3/5">
+            <div className=" right">
               {/* product Info */}
               <div className=" p-3 bg-white rounded flex-col justify-start items-start flex">
                 <div className=" w-full flex-col justify-start items-start gap-5 flex">

@@ -1,1 +1,13 @@
 @import "../css-config/mixins.scss";
+.upper{
+    @include md{
+        padding-right: 2rem ;
+        padding-left: 2rem;
+    }
+}
+.lower{
+    @include md{
+        padding-right: 2rem ;
+        padding-left: 2rem;
+    }
+}

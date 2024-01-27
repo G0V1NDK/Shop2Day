@@ -40,7 +40,7 @@ export const Carousel = () => {
 
   return (
     <div
-      className=" h-96 w-11/12 m-auto pt-8 pb-5 relative group crasousel"
+      className=" h-96 w-full m-auto pt-8 pb-5 relative group crasousel"
       
     >
       <div

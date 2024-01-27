@@ -44,7 +44,7 @@ const CardSection = ({ queryResult }) => {
   };
 
   return (
-    <section className="Electronics bg-white w-11/12 mb-8">
+    <section className="Electronics bg-white w-full mb-8">
       <div className="mx-auto w-full max-w-screen-xl">
         <div className="content-header mt-8 mb-8 mr-6 ml-6 flex justify-between">
           <div className="heading text-neutral-800 text-2xl font-semibold tracking-tight">

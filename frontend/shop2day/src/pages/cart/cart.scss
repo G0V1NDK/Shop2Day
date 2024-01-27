@@ -1,0 +1,29 @@
+@import "../css-config/mixins.scss";
+.content{
+    flex-direction: row;
+    @include md{
+        flex-direction: column;
+    }
+}
+.items{
+    width: 75%;
+    @include lg{
+        width: 70%;
+    }
+    @include md{
+        width: 100%
+    }
+}
+.checkout{
+    width: 25%;
+    @include lg{
+        width: 30%;
+    }
+    @include md{
+        width: 100%
+    }
+}
+.scrollable-container {
+    max-height: 100%; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
