@@ -61,6 +61,30 @@ console.log(cart);
    // Use an empty array as fallback if cart.items is undefined
   }, [cart]);
 
+  const handleCheckout = async () => {
+
+    try {
+      const token = localStorage.getItem("accessToken");
+      const response = await axios.post(
+        `${path_url}/stripe/create-checkout-session`,
+        {
+          userId: localStorage.getItem("user"),
+          cartItems: cart.items,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
+
+      // Redirect to Stripe Checkout
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+    }
+  };
 
   return (
     <>
@@ -264,7 +288,7 @@ fontSize: "28px",
 fontStyle: "normal",
 fontWeight: "600",
 lineHeight: "normal",
-letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
+letterSpacing: "0.56px"}}>Oops! No Products Available</p>
           </div>
         )}
              
@@ -297,12 +321,12 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                     Total MRP
                   </div>
                   <div className=" text-neutral-800 text-base font-medium">
-                    ({cart.totalQuantity
+                    ({cart?.totalQuantity
 })
                   </div>
                 </div>
                 <div className="text-right text-neutral-800 text-base font-medium ">
-                { (cart.totalPrice * 1.2).toFixed(1) }
+                { (cart?.totalPrice * 1.2).toFixed(1) }
                 </div>
               </div>
               <div className="Frame_3399 flex items-start justify-between w-full">
@@ -314,7 +338,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                     -
                   </div>
                   <div className="16188 text-right text-lime-500 text-base font-medium">
-                  { (cart.totalPrice * 0.2).toFixed(1) }
+                  { (cart?.totalPrice * 0.2).toFixed(1) }
                   </div>
                 </div>
               </div>
@@ -332,12 +356,13 @@ letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
                 Total Amount
               </div>
               <div className="text-[#262626] text-right font-montserrat text-lg font-semibold leading-normal">
-                {cart.totalPrice}
+                {cart?.totalPrice}
               </div>
             </div>
             <button
               className="flex items-center justify-center gap-2 p-3 w-full"
               style={{ "borderRadius": "0.25rem", background: "#FF7A22" }}
+              onClick={handleCheckout}
             >
               <div className="text-[#FFF] text-center font-montserrat text-base font-medium leading-normal">
                 Proceed to checkout

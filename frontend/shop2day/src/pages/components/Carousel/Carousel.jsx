@@ -40,7 +40,7 @@ export const Carousel = () => {
 
   return (
     <div
-      className=" h-96 w-full m-auto pt-8 pb-5 relative group crasousel"
+      className=" h-72 md:h-96 w-full m-auto pt-8 pb-5 group crasousel static"
       
     >
       <div
@@ -48,7 +48,7 @@ export const Carousel = () => {
         className="w-full h-full rounded bg-center bg-cover duration-500"
       ></div>
       {/* Left Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full  bg-black/20 text-white cursor-pointer">
+      <div className="hidden group-hover:block top-[50%] -translate-x-0 left-5 text-2xl rounded-full  bg-black/20 text-white cursor-pointer absolute sm:translate-y-[-2rem] md:translate-y-[-50px] lg:translate-y-[-3rem] translate-y-[-7.5rem] ">
         {/* <BsChevronCompactLeft onClick={prevSlide} size={30} /> */}
         <button
           type="button"
@@ -77,8 +77,7 @@ export const Carousel = () => {
         </button>
       </div>
       {/* Right Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full bg-black/20 text-white cursor-pointer">
-        {/* <BsChevronCompactRight  /> */}
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 right-5 text-2xl rounded-full bg-black/20 text-white cursor-pointer sm:translate-y-[-2rem] md:translate-y-[-50px] lg:translate-y-[-3rem] translate-y-[-7.5rem] "> {/* <BsChevronCompactRight  /> */}
         <button
           type="button"
           className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none "

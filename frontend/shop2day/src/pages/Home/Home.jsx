@@ -11,18 +11,16 @@ const Home = ({queryResult}) => {
     <>
       <Verify />
 
-<div className="content ">
-  <div className="upper px-16">
-  <Carousel />
-  </div>
+      <div className="content ">
+        <div className="upper px-4 md:px-16 static">
+          <Carousel />
+        </div>
 
-
-<div className=" lower flex justify-center px-16">
-  <CardSection queryResult={queryResult} />
-</div>
-<Footer/>  
-</div>
-
+        <div className=" lower flex justify-center px-4 md:px-16">
+          <CardSection queryResult={queryResult} />
+        </div>
+        <Footer />
+      </div>
     </>
   );
 };

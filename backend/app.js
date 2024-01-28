@@ -16,7 +16,8 @@ const productsRoutes = require('./routes/products-routes');
 const authRoutes = require('./routes/auth-routes');
 const sellerRoutes = require('./routes/seller-routes');
 const cartRoutes = require("./routes/cart-routes");
-
+const orderRoutes = require("./routes/order-routes");
+const stripeRoutes = require("./routes/stripe-routes");
 const app = express();
 
 app.use(enableCors);
@@ -39,6 +40,8 @@ app.use(authRoutes);
 app.use(productsRoutes);
 app.use('/seller', sellerRoutes);
 app.use("/cart", cartRoutes);
+app.use("/order",orderRoutes);
+app.use("/stripe",stripeRoutes);
 
 app.use(notFoundMiddleware);
 

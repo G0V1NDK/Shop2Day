@@ -8,6 +8,7 @@ import Product from "./pages/product/Product.jsx";
 import Header from "./pages/components/Header/Header.jsx";
 import Footer from "./pages/components/Footer";
 import Cart from "./pages/cart/Cart.jsx";
+import CheckoutSuccess from "./pages/checkout/Checkout.jsx";
 
 export const Layout = ({children}) => {
 
@@ -57,6 +58,14 @@ export const App = () => {
             element={
               <Layout>
                 <Cart />{" "}
+              </Layout>
+            }
+          />
+          <Route
+            path="/checkout-success"
+            element={
+              <Layout>
+                <CheckoutSuccess />{" "}
               </Layout>
             }
           />
