@@ -295,7 +295,7 @@ letterSpacing: "0.56px"}}>Oops! No Products Available</p>
             </div>
           </div>
           <div
-            className="3403 flex flex-col items-start gap-5  p-8 checkout"
+            className="3403 flex flex-col items-start gap-5  p-8 checkouts"
             style={{ "borderRadius": "0.25rem", background: "#FFF",  }}
           >
             <div className="text-[#262626] font-montserrat text-xl font-semibold leading-normal tracking-[0.0125rem] w-full">
