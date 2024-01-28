@@ -9,18 +9,44 @@ import hamburger from "../../../Images/hamburger.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "./Header.scss";
 
+import axios from "axios";
+
 const Header = ({ onSubmitSearch }) => {
   const [searchTxt, setSearchTxt] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
+  const options = {
+    method: "GET",
+    url: "https://auto-suggest-queries.p.rapidapi.com/suggestqueries",
+    params: { query: searchTxt },
+    headers: {
+      "X-RapidAPI-Key": "528109bd8emsh956fa1ddfd311b8p1c8333jsn7fb06e1c7eea",
+      "X-RapidAPI-Host": "auto-suggest-queries.p.rapidapi.com",
+    },
+  };
+
   const handleSearchChange = async () => {
-    const autoSearch = await fetch(
-      "http://suggestqueries.google.com/complete/search?client=firefox&q=" +
-        searchTxt
-    );
-    const json = await autoSearch.json();
-    setSearchResult(json[1]);
-    // console.log(json[1]);
+    // previous autosearch query not working -> cors blocked by google
+    // // const autoSearch = await fetch(
+    // //   "http://suggestqueries.google.com/complete/search?client=firefox&q=" +
+    // //     searchTxt
+    // // );
+    // const json = await autoSearch.json();
+    // setSearchResult(json[1]);
+    // // console.log(json[1]);
+
+    try {
+      const response = await axios.request(options);
+
+      if(!searchTxt){
+        setSearchResult("");
+      }else{
+        setSearchResult(response.data);
+      }
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

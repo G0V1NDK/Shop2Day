@@ -264,7 +264,7 @@ fontSize: "28px",
 fontStyle: "normal",
 fontWeight: "600",
 lineHeight: "normal",
-letterSpacing: "0.56px"}}>Oops! No Products Avialable</p>
+letterSpacing: "0.56px"}}>Oops! No Products Available</p>
           </div>
         )}
              

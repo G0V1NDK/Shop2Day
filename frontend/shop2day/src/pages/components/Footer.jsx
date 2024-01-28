@@ -7,7 +7,7 @@ const Footer = () => {
         
 <footer className="bg-dark dark:bg-gray-900" style={{background:"#101929"}}>
     <div className="mx-auto w-full max-w-screen-xl">
-      <div className="grid grid-cols-5 gap-2 px-4 py-6 lg:py-8 md:grid-cols-5">
+      <div className="grid grid-cols-3 gap-2 px-4 py-6 lg:py-8 md:grid-cols-5">
         <div>
             <h1 className="mb-4 text-zinc-500 text-sm font-semibold">About</h1>
             <ul className="text-gray-500 dark:text-gray-400 ">
